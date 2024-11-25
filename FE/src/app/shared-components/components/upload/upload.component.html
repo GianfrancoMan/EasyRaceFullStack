@@ -1,0 +1,17 @@
+
+<input 
+  type="file" (change)="onFileSelected($event)"
+  name="upload"
+  accept=".srr"
+  class="file-input"
+  #fileUpload
+>
+<div class="upload">
+  <h3>{{title}}</h3>    
+  <button 
+    mat-flat-button
+    color="accent"
+    (click)="fileUpload.click()">
+    SELECT RACE
+  </button>
+</div>

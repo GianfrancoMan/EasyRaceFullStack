@@ -1,0 +1,86 @@
+@import "../../../../assets/scss/base.scss";
+#nav{ 
+  height: 10%;
+  width: 100%;
+  background-color: $green;
+  font-family: "Audiowide", serif;
+  .nav-main-content  {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: $white;
+    &-first{
+      width: 5%;
+      height: 100%;
+      margin-top: 1%;
+      padding-top: 15px;
+    }
+    &-second{
+      width: 90%;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      p {text-align: right; font-size: xx-large; box-sizing: border-box;padding: 0;margin: 0;font-weight: bold;}
+      &-links {
+        position: relative;
+        mat-icon {
+          margin-left: 15px;
+          cursor: pointer;
+        }
+        button {
+          border: none;
+          background-color: $green;
+          mat-icon.danger {color: $red;}
+          mat-icon.quite {color: $blue;}
+        }
+        button:hover {cursor: pointer; color:$greenDisabled;}
+        span {
+          margin-left: 5px;
+          font-weight: 600;
+          cursor: pointer;
+        }
+      }
+    }
+    &-third{width: 5%;
+      height: 100%;
+      margin: auto;
+    }
+  }
+}
+
+.icons {
+  color:$green
+}
+
+[routerLink]{
+  cursor: pointer;
+  &:hover{
+    color: $yellowAlert;
+  }
+}
+.mn {width: 500px !important;}
+
+
+
+
+  //****************************//
+  //******* Media query ********//
+  //****************************//
+  @media only screen and (max-width:890px) {
+    #nav { 
+      .nav-main-content  {
+        &-second{
+          img {height: 30px;}
+          flex-direction: column;
+          p {font-size:medium;}
+          &-links{
+            span{font-size: 10px;}
+            button{span{font-size:10px;}}
+          }
+        }
+      }
+    }
+  }

@@ -1,0 +1,43 @@
+<div id="categoryName">
+  <app-nav [title]="title"></app-nav>
+  <div class="content">
+    <app-upload *ngIf="uploadView"
+      [title]="uploadTitle"
+      (selectedFile)="onSelectedFile($event)">
+    </app-upload>
+    <app-list-items *ngIf="!uploadView"
+      [title]="'Select a category'"
+      [type]="type"
+      [items]="categories"
+      (selectedItem)="onItemSelected($event)"
+    ></app-list-items>
+    @if (!uploadView) {
+      <div  class="input-section">
+        <form [formGroup]="categoryNameForm" (ngSubmit)="onSaveNewName()">
+          <div class="form">
+            <div class="fields">
+              <label for="newestCategory">Type The New Category Name</label>
+              <input matInput
+                name="newestCategory"
+                type="text"
+                formControlName="newest"
+              >
+            </div>
+          </div>
+          <div class="btns">
+            <button mat-flat-button
+              color="primary"
+              [disabled]="categoryNameForm.invalid"
+              type="submit"
+            ><span>SAVE</span></button>
+            <button mat-flat-button
+              (click)="onCancelCategoryName()"
+              type="button"
+            ><span>CANCEL</span></button>
+          </div>
+        </form>
+      </div>
+    }
+  </div>
+  <div class="footer">Gianfranco Manca 2024</div>
+</div>

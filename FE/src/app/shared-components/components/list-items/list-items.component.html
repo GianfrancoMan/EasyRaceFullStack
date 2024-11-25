@@ -1,0 +1,14 @@
+<div class="list-selected">  
+  <h2>{{title}}</h2>
+  <mat-list role="list">
+    @for(item of items; track item) {
+      <mat-list-item role="listitem">
+        <p *ngIf="type === 'athlete'" class="list-item" (click)="clickItem(item)">
+          <strong>{{item?.surname}} {{item?.name}}</strong> born in <strong>{{item?.cityOfBirth}}</strong> on <strong>{{item?.birthday | date | uppercase}}</strong>
+        </p>
+        <p *ngIf="type === 'category'" class="list-item" (click)="clickItem(item)">
+          Category Name: <strong>{{item?.name}}</strong>, Laps To Do:<strong>{{item?.lapsToDo}}</strong> 
+      </mat-list-item>
+    }
+  </mat-list>
+</div>

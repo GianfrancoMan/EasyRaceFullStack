@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+<div class="fnsh_ln_sctn">
+  <form class="athl-rcnb" [formGroup]="raceNumberForm" (ngSubmit)="onMarkPassage()">
+    <h2>Race Number</h2>
+    <input type="text" formControlName="raceNumber">
+    <button mat-flat-button
+      type="submit"
+    ><span>Mark Passage</span></button>
+  </form>
+  <div class="athl-dt">
+    <p>@if(crossingData){<span>name: <strong>{{crossingData.athlete.name}} {{crossingData.athlete.surname}}</strong></span>} @else {<span>&nbsp;---&nbsp;</span>}</p>
+    <p>@if(crossingData){<span>team: <strong>{{crossingData.athlete.team}}</strong></span>} @else {<span>&nbsp;---&nbsp;</span>}</p>
+    <p>@if(crossingData){<span>category: <strong></strong>{{crossingData.category.name}}</span>} @else {<span>&nbsp;---&nbsp;</span>}</p>
+  </div>
+  <div class="athl-prfmc">
+    <p>Race number:@if(crossingData){<span>{{crossingData.raceNumber}}</span>} @else {<span>&nbsp;---&nbsp;</span>}</p>
+    <p>Position: @if(crossingData){<span>{{crossingData.position}}</span>} @else {<span>&nbsp;---&nbsp;</span>}</p>
+    <p>Current: @if(crossingData){<span>{{crossingData.textTimes[crossingData.textTimes.length-1]}}</span>} @else {<span>&nbsp;---&nbsp;</span>}</p>
+    <p>Gap: @if(crossingData){<span>{{crossingData.textGap}}</span>} @else {<span>&nbsp;---&nbsp;</span>}</p>
+    <p>Best:<span>{{bestLap}}</span></p>
+  </div>
+</div>
+
+

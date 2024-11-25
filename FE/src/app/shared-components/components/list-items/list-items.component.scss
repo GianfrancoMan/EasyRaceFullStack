@@ -1,0 +1,34 @@
+@import "./../../../../assets/scss/base.scss";
+
+.list-selected {
+  h2 {
+    color: $blue;
+    text-align: center;
+  }
+  height: 30%;
+  width: fit-content;
+  max-width: 50%;
+  margin:auto;
+  mat-list {
+    width: 100%;
+    height: fit-content;
+    max-height: 70%;background-color: transparentize($color: $green, $amount: 0.7);
+    overflow: auto;
+    //&::-webkit-scrollbar {display: none;}
+    mat-list-item:hover {background-color: transparentize($color: $green, $amount: 0.5);}
+    mat-list-item{p{cursor: pointer;}}
+  } 
+
+
+  
+  //****************************//
+  //******* Media query ********//
+  //****************************//
+  @media only screen and (max-width:700px) {
+    max-width: 98%;
+    h2{font-size: 1em;}
+    mat-list{
+      mat-list-item{p{font-size: smaller;}}
+    }
+  }
+}

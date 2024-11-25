@@ -1,0 +1,65 @@
+@import "./../../../assets/scss/base.scss";
+
+#athleteDelete {
+  width: 100vw;
+  height: 100vh;
+  .content {
+    padding-top: 10px;
+    height: 85%;
+    width: 100%;
+    background-image: url('./../../../assets/img/sfondo.png');
+    .dt-athl {
+      overflow: auto;
+      height: 67%;
+      width: 50%;
+      margin:auto;
+      margin-bottom: 3%;
+      border-radius: 15px;
+      background-color:transparentize($color: $blue, $amount: 0.7);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      p{
+        font-size: 1.5em;
+        font-weight: normal;
+        color: $yellowAlert;
+        span {
+          font-weight: bold;
+          color: $white;
+        }
+      }
+      .btn {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+      }
+    }
+  }
+  .footer {
+    height: 5%;
+    width: 100%;
+    background-color: $green ;
+    color:$white;
+    align-content: center;
+    text-align: center;
+  }
+
+
+
+  //****************************//
+  //******* Media query ********//
+  //****************************//
+  @media only screen and (max-width:700px) {
+    .content {
+      .dt-athl {
+        align-items: flex-start;
+        width: 80%;
+        span {display: block;}
+        p{font-size: 1.2em;}
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+<div id="officerDialog">
+  <h2 mat-dialog-title>{{data.title | uppercase}}</h2>
+  <mat-dialog-content>
+    <br>
+    <ul>
+      @for(msg of data.messages; track msg) {
+        <li>{{msg}}</li>
+      }      
+    </ul>
+  </mat-dialog-content>
+</div>

@@ -1,0 +1,44 @@
+<div id="officer">
+  <app-nav [title]="title" [manage]="manage" (racePerformedEmitter)="onRacePerformed($event)"></app-nav>
+  <div class="content">
+    <div class="content-inside">
+      @if(!fileSelected){
+        <app-upload (selectedFile)="onUpload($event)"></app-upload>
+      } @else {
+        <div class="content-inside-up">
+          <mat-grid-list cols="3" rowHeight="100%" role="list">
+            <mat-grid-tile role="listitem">
+              <app-section-category 
+                [categories]="categories"
+                [selectedIndexes]="selectedIndexes"
+                (overall)="onOverallChange($event)"
+              >
+              </app-section-category>
+            </mat-grid-tile>
+            <mat-grid-tile colspan="2">
+              <app-finish-line (categoryForRanking)="onCategoryForRanking($event)"></app-finish-line>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </div>
+        <div class="content-inside-up mbl">
+              <app-section-category 
+                [categories]="categories"
+                [selectedIndexes]="selectedIndexes"
+                (overall)="onOverallChange($event)"
+              >
+              </app-section-category>
+              <app-finish-line (categoryForRanking)="onCategoryForRanking($event)"></app-finish-line>
+        </div>
+        <div class="content-inside-down">
+          <app-ranking
+            [categories]="rankingCategories"
+            [index]="selectedIndex"
+            [ranking]="ranking"
+            (changeTab)="onCategoryForRanking($event)"
+          ></app-ranking>
+        </div>
+      }
+    </div>
+    <div class="content-footer">Gianfranco Manca 2024</div>
+  </div>
+</div>

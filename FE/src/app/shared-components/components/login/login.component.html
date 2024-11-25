@@ -1,0 +1,31 @@
+<div id="login">
+  <form class="form" [formGroup]="dataForm" (ngSubmit)="onSubmit()">
+    <h2>Please Log In to Gain Access to all Easy Race Features</h2>
+    <div class="sctn">
+      <img src="./../../../../assets/img/logo.png" height="50">
+    </div>
+    <div class="sctn">
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput
+          type="email"
+          formControlName="email"
+        >
+        <mat-hint>type a valid email</mat-hint>
+        <mat-error>type a valid email</mat-error>
+      </mat-form-field>      
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput
+          type="password"
+          formControlName="password"
+        >
+        <mat-hint>min 8 character</mat-hint>
+        <mat-error>min 8 character</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="sctn">
+      <button mat-flat-button color="primary" type="submit" [disabled]="dataForm.invalid">LOGIN</button>
+    </div>
+  </form>
+</div>

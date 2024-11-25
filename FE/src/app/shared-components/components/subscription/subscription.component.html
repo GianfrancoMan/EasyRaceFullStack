@@ -1,0 +1,51 @@
+<div id="subscription">
+  <form [formGroup]="dataForm" (ngSubmit)="onSubmit()" class="form">
+    <div class="sctn">
+      <img src="./../../../../assets/img/logo.png" height="50">
+      <h3 class="txt">Sign up to Easy Race to gain access to all its features</h3>
+    </div>
+    <div class="sctn">
+      <mat-form-field>
+        <mat-label>First Name</mat-label>
+        <input matInput
+          type="text"
+          formControlName="name"
+        >
+        <mat-hint>min 2 characters</mat-hint>
+        <mat-error>min 2 characters</mat-error>
+      </mat-form-field>      
+      <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input matInput
+          type="text"
+          formControlName="surname"
+        >
+        <mat-hint>min 2 characters</mat-hint>
+        <mat-error>min 2 characters</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="sctn">
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput
+          type="email"
+          formControlName="email"
+        >
+        <mat-hint>type a valid email</mat-hint>
+        <mat-error>type a valid email</mat-error>
+      </mat-form-field>      
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput
+          type="password"
+          formControlName="password"
+        >
+        <mat-hint>min 8 character</mat-hint>
+        <mat-error>min 8 character</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="sctn">
+      <button mat-flat-button color="primary" type="submit" [disabled]="dataForm.invalid">SUBSCRIBE</button>
+    </div>
+  </form>
+</div>

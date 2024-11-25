@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+<div class="cat-section">
+  <div class="cat-section-cats">           
+    <h2 *ngIf="categories.length > 0">Start the category/ies</h2>
+    <h2 *ngIf="categories.length === 0">All Race Categories Have Started</h2>
+    @for(names of started; track names;) {
+      <div class="ckb">
+        <mat-checkbox disabled="true" checked><label class="started">{{names}}</label></mat-checkbox>
+      </div>
+    }
+    @for(c of categories; track c; let i = $index) {
+      <div class="ckb">
+        <mat-checkbox disabled=false (change)="onChangeCheckBox(i)"><label>{{c.name}}</label></mat-checkbox>
+      </div>
+    }    
+    <div class="ckb ovrl" *ngIf="checkForOverall()">
+      <mat-checkbox [checked]="isOverall" (change)="onChangeOverall()"><label>{{"Enable Overall Ranking"}}</label></mat-checkbox>
+    </div>
+  </div>
+  <div class="cat-section-start">
+    <button mat-flat-button
+      type="button" 
+      color="primary" 
+      (click)="onStartCategories()"
+      [hidden]="categories.length === 0"
+    >
+    START
+    </button>
+  </div>
+</div>
+
+

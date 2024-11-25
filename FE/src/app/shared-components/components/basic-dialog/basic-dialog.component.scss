@@ -1,0 +1,10 @@
+@import '../../../../assets/scss/base.scss';
+#basicDialog {
+  max-width: 700px;
+  border-radius: 10px;
+  padding: 0 5px 0 5px;
+  background-color:$greenDisabled;
+  color: white;
+  h2 {color:$blue;}
+  mat-dialog-content {color:$blue;}
+}

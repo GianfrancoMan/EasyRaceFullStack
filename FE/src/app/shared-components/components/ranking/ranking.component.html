@@ -1,0 +1,37 @@
+<div id="ranking">
+  <h2>RANKINGS</h2>
+  <div class="tab-grp">
+    <mat-tab-group [selectedIndex]="index" color="warn" (selectedIndexChange)="onFocusChange($event)">
+      @for(category of categories; track category){
+        <mat-tab [label]="category.name">
+          <div class="tab-cnt">
+            <table class="tbl">
+              <tr>
+                <th>Pos.</th>
+                <th>Num.</th>
+                <th>Surname</th>
+                <th class="th-nn">Best</th>
+                <th class="th-nn">Current</th>
+                <th>Overall</th>
+                <th class="th-nn">Gap</th>
+                <th class="th-nn">Currently</th>
+              </tr>
+              @for(data of ranking; track data; let idx = $index) {
+              <tr>
+                <td>{{idx+1}}</td>
+                <td>{{data.raceNumber}}</td>
+                <td>{{data.athlete.surname}}</td>
+                <td class="td-nn">{{setBest(idx) ?? "----"}}</td>
+                <td class="td-nn">{{data.textTimes[data.textTimes.length -1] ? data.textTimes[data.textTimes.length -1] : '----'}}</td>
+                <td>{{data.textOverall}}</td>
+                <td class="td-nn">{{data.textGap}}</td>
+                <td class="td-nn">{{data.finished ? "Finished" : "Competing"}}</td>
+              </tr>
+              }
+            </table>
+          </div>
+        </mat-tab>
+      }
+    </mat-tab-group>  
+  </div>
+</div>

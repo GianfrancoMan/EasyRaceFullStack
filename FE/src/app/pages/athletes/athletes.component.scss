@@ -1,0 +1,13 @@
+@import '../../../assets/scss/base.scss';
+#athletes {
+  width: 100vw;
+  height: 100vh;
+  .footer {
+    height: 5%;
+    width: 100%;
+    background-color: $green ;
+    color: $white;
+    align-content: center;
+    text-align: center;
+  }
+}

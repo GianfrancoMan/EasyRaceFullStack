@@ -1,0 +1,15 @@
+
+<div id="authorization">
+  <div class="form-cntn">
+    @if(displayLogin) {
+      <app-login (userLoginEmitter)="onUserLoginEmitter($event)"></app-login>
+      <p>Not registered yet?
+        <a type="button" (click)="goToSignUp()"><strong> Sign up</strong></a>
+        &nbsp;&nbsp;-&nbsp;&nbsp;
+        <a routerLink="/"><strong>Home</strong></a></p>
+    } @else {
+      <app-subscription (userEmitter)="onUserEmitter($event)"></app-subscription>
+      <p><a routerLink="/"><strong>Home</strong></a></p>
+    }
+  </div>
+</div>

@@ -1,0 +1,84 @@
+@import "./../../../../assets/scss/variables";
+
+.fnsh_ln_sctn {
+  * {
+    font-family: "Audiowide", "Roboto", serif;
+    font-weight: bold;
+  }
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  background-color: transparentize($greenDisabled, 0.60);
+  color: $blue;
+  .athl-rcnb {
+    overflow: auto;
+    width: 20%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: space-around;
+    input {
+      width: 50%;
+      font-size: 2.5em;
+      color: $green;
+    }
+    button{span{color: $blue;}}
+  }
+  .athl-prfmc {
+    overflow: auto;
+    color: $black;
+    margin-left: 5%;
+    width: 30%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    justify-content: center;
+    p{
+      color: $black;
+      span{
+        color: $blue; margin-left: 5px;
+      }
+    }
+  }
+  .athl-dt {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+    align-items: center;
+    width: 50%; height: 100%;
+    
+    p{
+      color: $white;
+      font-size: 1.5em;
+      span{
+        margin-left: 10px;
+        color: $black;
+      }
+    }
+  }
+  .athl-rcnb, .athl-dt{
+    border: 1px, solid, transparent;
+    border-top-right-radius: 5%;
+    border-right-color: $black;
+  }
+
+
+
+  /*******************************/
+  /*********** MEDIA *************/
+  /*******************************/
+  @media only screen and (max-width:1000px) {
+    display: block;
+    overflow: auto;
+    .athl-prfmc, .athl-dt {visibility: hidden;display:none;}
+    .athl-rcnb {
+      margin: auto;
+      width:100%; height: 100%;
+      h2{font-size: 1em; line-height: 1em;}
+      input{max-width: 100px; font-size: 1.5em;}
+    }
+  }
+}

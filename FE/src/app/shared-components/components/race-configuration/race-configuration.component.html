@@ -1,0 +1,170 @@
+<div id="formForRace">
+  <div class="forms">
+    <form class="forms-data" [formGroup]="dataForm" (ngSubmit)="onSubmitData()">
+        <div class="rw">
+          <mat-form-field>
+            <mat-label>Title</mat-label>
+            <input matInput
+              formControlName="title"
+              type="text"
+            >
+            <mat-hint>the name of the race</mat-hint>
+            <mat-error>the name of the race is required</mat-error>
+          </mat-form-field>
+          
+          <mat-form-field>
+            <mat-label>City</mat-label>
+            <input matInput
+              type="text"
+              formControlName="city"
+            >
+            <mat-hint>the city in which the competition will take place</mat-hint>
+            <mat-error>the city in which the competition will take place is required</mat-error>
+          </mat-form-field>
+          
+          <mat-form-field>
+            <mat-label>Meeting</mat-label>
+            <input matInput
+              type="text"
+              formControlName="meeting"
+            >
+            <mat-hint>place and time of the meeting</mat-hint>
+            <mat-error>place and time of the meeting is required</mat-error>
+          </mat-form-field>
+        </div>
+        
+        <div class="rw">
+          <mat-form-field>
+            <mat-label>Date</mat-label>
+            <input matInput
+              type="text"
+              [matDatepicker]="piker"
+              (dateChange)="dateChangeHandler($event.value)"
+              [value]="raceData ? raceData.date : ''"
+              disabled    
+            >
+            <mat-hint>the date of the competition(mm/gg/aaaa)</mat-hint>
+            <mat-error>the date of the competition(mm/gg/aaaa) is required</mat-error>
+            <mat-datepicker-toggle matIconSuffix [for]="piker"></mat-datepicker-toggle>
+            <mat-datepicker #piker [disabled]="formFilled"></mat-datepicker>
+          </mat-form-field>
+          
+          <mat-form-field>
+            <mat-label>Organizer</mat-label>
+            <input matInput
+              type="text"
+              formControlName="organizer"
+            >
+            <mat-hint>who organizes the competition</mat-hint>
+            <mat-error>who organizes the competition is required</mat-error>
+          </mat-form-field>
+          
+          <mat-form-field>
+            <mat-label>Description</mat-label>
+            <textarea matInput 
+              type="text"
+              formControlName="description">
+            </textarea>
+            <mat-hint>A brief description of the race(max 200)</mat-hint>
+          </mat-form-field>
+        </div>
+        
+        <div class="rw">
+          <mat-form-field>
+            <mat-label>Federation</mat-label>
+            <input matInput
+              type="text"
+              formControlName="federation"
+            >
+            <mat-hint>the sports federation if it exists</mat-hint>
+          </mat-form-field>
+    
+          <mat-form-field>
+            <mat-label>Type</mat-label>
+            <input matInput
+              type="text"
+              formControlName="type"
+            >
+            <mat-hint>the type of the sport e.g. 'cycling'</mat-hint>
+          </mat-form-field>
+          
+          <mat-form-field>
+            <mat-label>Specialty</mat-label>
+            <input matInput
+              type="text"
+              formControlName="specialty"
+            >
+            <mat-hint>e.g. for type 'cycling' can be 'mtb'</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div class="ln"><hr></div>
+  
+        <form class="rw" formGroupName="catForm">      
+          <mat-form-field class="short-form">
+            <mat-label>Category</mat-label>
+            <input matInput
+              type="text"
+              formControlName="category"
+            >
+            @if(categoryError) {
+              <mat-hint>Add categories</mat-hint>
+            } @else {
+              <mat-error>Add at least one category</mat-error>
+            }
+          </mat-form-field>
+        
+          <mat-form-field>
+            <mat-label>Laps to perform</mat-label>
+            <input matInput
+              type="number"
+              formControlName="laps"
+            >
+            @if(lapsError) {
+              <mat-hint>at least 1 lap</mat-hint>
+            } @else {
+              <mat-error>at least 1 lap</mat-error>
+            }
+          </mat-form-field>
+    
+          <button 
+            type="button"
+            (click)="onSubmitCategory()"
+          >Add Category
+          </button>
+        </form>
+        <form class="rw" formGroupName="removeForm">
+          <mat-form-field>
+            <mat-label>categories</mat-label>
+            <mat-select formControlName="remove">
+              @for (ca of selectedCategories; track ca) {
+                <mat-option [value]="ca | uppercase">{{ca}}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>  
+          <button 
+            type="button"
+            (click)="onSubmitRemove()"
+          >Remove Category
+          </button>
+        </form>
+        
+        <div class="ln"><hr></div>
+
+        <div class="foot-btn">
+          <button mat-flat-button 
+            color="accent"
+            type="submit"
+            [disabled]=" dataForm.invalid || (!raceData && selectedCategories.length <= 0) "
+          >Send Data
+          </button>
+          <button mat-flat-button
+            routerLink="/"
+            type="button"
+            color="primary"
+          >CANCEL
+          </button>
+        </div>
+    </form>
+  </div>    
+</div>

@@ -1,0 +1,22 @@
+<div id="changeCat">
+  <app-nav [title]="title"></app-nav>
+  <div class="content">
+    <app-upload *ngIf="uploadView"
+      [title]="uploadTitle"
+      (selectedFile)="onSelectedFile($event)">
+    </app-upload>
+    <app-list-items *ngIf="!uploadView"
+      [title]="'Select the athlete who needs to change category'"
+      [items]="athletes"
+      (selectedItem)="onSelectedAthlete($event)">
+    </app-list-items>
+    <div class="ctgr-slctr">
+      <app-category-selector *ngIf="currentCategory"
+        [categories]="categories"
+        [category]="currentCategory"
+        (categoryEmitter)="onCategorySelected($event)"
+      ></app-category-selector>
+    </div>
+  </div>
+  <div class="footer">Gianfranco Manca 2024</div>
+</div>

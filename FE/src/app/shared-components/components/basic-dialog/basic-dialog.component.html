@@ -1,0 +1,15 @@
+
+<div id="basicDialog">
+  <h2 mat-dialog-title>{{data.title | uppercase}}</h2>
+  <mat-dialog-content>
+    <br>
+    <ul>
+      @for(msg of data.messages; track msg) {
+        <li>{{msg}}</li>
+      }      
+    </ul>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button-raised (click)="onClose()">CLOSE</button>
+  </mat-dialog-actions>
+</div>

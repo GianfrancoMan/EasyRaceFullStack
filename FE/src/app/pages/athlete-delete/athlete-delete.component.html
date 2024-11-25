@@ -1,0 +1,34 @@
+<div id="athleteDelete">
+  <app-nav [title]="title"></app-nav>  
+  <div class="content">
+    @if(!fileSelected){
+    <app-upload [title]="titleUpload"  (selectedFile)="onSelectedFile($event)"></app-upload>
+    } 
+    @else {
+    <app-list-items
+      [title]="'Select the athlete to remove'"
+      [items]="athletes"
+      (selectedItem)="onSelectedAthlete($event)"
+    >
+    </app-list-items>
+    <div class="dt-athl" *ngIf="athleteToDelete">
+      <p>Name: <span>{{athleteToDelete.name}} {{athleteToDelete.surname}}</span></p>
+      <p>Team: <span *ngIf="athleteToDelete.team">{{athleteToDelete.team}}</span><span *ngIf="athleteToDelete.team==undefined">Team Not Provided</span></p>
+      <p>City: <span>{{athleteToDelete.cityOfBirth}}</span></p>
+      <p>Birth Date: <span>{{athleteToDelete.birthday}}</span></p>
+      <div class="btn">
+        <button mat-raised-button color="warn" (click)="onRemoveAthlete()">
+          <mat-icon>delete_forever</mat-icon> Remove Athlete
+        </button>      
+        <button mat-raised-button color=accent (click)="goHome()">
+          <mat-icon>undo</mat-icon> Cancel
+        </button>
+      </div>
+    </div>
+    }
+
+  </div>
+  <div class="footer">
+    Gianfranco Manca 2024
+  </div>
+</div>

@@ -1,0 +1,77 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+<div id="nav" [ariaDisabled]="manage">
+  <div class="nav-main-content">
+    <div class="nav-main-content-first">
+      <button mat-icon-button
+        [matMenuTriggerFor]="menu"
+        aria-label="bla"
+        [disabled]="manage">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" class="custom-menu">
+        <button mat-menu-item routerLink="/" class="icons">
+          <mat-icon color="primary">home</mat-icon>
+          <span>Home Page</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item routerLink="/new" class="icons">
+          <mat-icon color="primary">settings</mat-icon>
+          <span>Configure a New Race</span>
+        </button>
+        <button mat-menu-item  routerLink="/update" class="icons">
+          <mat-icon color="primary">update</mat-icon>
+          <span>Update Configuration Data</span>
+        </button>
+        <button mat-menu-item routerLink="/chg-ct-name" class="icons">
+          <mat-icon color="primary">edit_note</mat-icon>
+          <span>Change Category Name</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item routerLink="/add" class="icons">
+          <mat-icon color="primary">group_add</mat-icon>
+          <span>Add Athletes To a Race</span>
+        </button>
+        <button mat-menu-item routerLink="/exclude" class="icons">
+          <mat-icon color="primary">person_remove</mat-icon>
+          <span>Remove Athlete From a Race</span>
+        </button>
+        <button mat-menu-item routerLink="/change-cat" class="icons">
+          <mat-icon color="primary">drive_file_rename_outline</mat-icon>
+          <span>Change Athlete Category</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item routerLink="/run" class="icons">
+          <mat-icon color="primary">flag</mat-icon>
+          <span>Start a Race and Manage its Progress</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item routerLink="/results" class="icons">
+          <mat-icon color="primary">archive</mat-icon>
+          <span>Races Results</span>
+        </button>
+      </mat-menu>
+    </div>
+    <div class="nav-main-content-second">
+      <img src="../../../../assets/img/logo.png" alt="Logo">
+      <p>{{title}}</p>
+      <div class="nav-main-content-second-links" >
+        @if(!manage) {
+          @if(!navService.isLoggedIn()) {
+            <mat-icon>login</mat-icon><span routerLink="/auth">Login</span>
+          } @else {
+            <mat-icon (click)="prepareDialog()">person_outline</mat-icon><span (click)="prepareDialog()">Account</span>
+            <mat-icon (click)="onLogout()">logout</mat-icon><span (click)="onLogout()">Logout</span>
+          }
+        } @else {
+          <button (click)="onMarkComplete(true)">
+            <mat-icon class="quite">save</mat-icon><span>MARK AS COMPLETED</span>
+          </button>
+          <button (click)="onCancelExit(false)">
+            <mat-icon class="danger">backspace </mat-icon><span>CANCEL AND EXIT</span>
+          </button>
+        } 
+      </div>
+    </div>
+    <div class="nav-main-content-third"></div>
+  </div>
+</div>

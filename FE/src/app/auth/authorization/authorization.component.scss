@@ -1,0 +1,27 @@
+@import "./../../../assets/scss/base.scss";
+#authorization {
+  height: 100vh;
+  width: 100vw;
+  background-image:url("./../../../assets/img/sfondo.png");
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .form-cntn {
+    height: 50%;
+    min-height: 500px;
+    width: 50%;
+    min-width: 250px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    background-color: $green;
+    app-login, app-subscription{width: 100%;}
+    p{
+      a{text-decoration: none;cursor: pointer;}
+      a:visited{color: inherit;}
+    }
+  }
+}

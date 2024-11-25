@@ -1,0 +1,11 @@
+<div id="update">
+  <app-nav [title]="title"></app-nav>
+  <div class="content" *ngIf="uploadView">
+    <app-upload
+      [title]="uploadTitle"
+      (selectedFile)="onSelectedFile($event)">
+    </app-upload>
+  </div>
+  <app-race-configuration *ngIf="!uploadView && data" [raceData]="data" (raceConfiguration)="onRaceConfiguration($event)"></app-race-configuration>
+  <div class="footer">Gianfranco Manca 2024</div>
+</div>

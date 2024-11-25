@@ -1,0 +1,25 @@
+<div id="categorySelector">
+  <div class="content">
+    <div class="list">
+      <h2>Available Categories</h2>
+      <mat-list role="list">
+        @for(cat of categories; track cat) {
+          <mat-list-item role="listitem">
+            <p class="list-item" (click)="clickCategory(cat)">
+              <strong>{{cat.name}}</strong>
+            </p>
+          </mat-list-item>
+        }
+      </mat-list>
+    </div>
+    <div class="current">
+      <h2>Current Category</h2>
+      <p>name:<strong> {{category.name}}</strong></p>
+      <p>laps:<strong> {{category.lapsToDo}}</strong></p>
+    </div>
+  </div>
+  <div class="btn">
+    <button mat-stroked-button color="primary" (click)="onClickSendButton()">SEND</button>
+    <button mat-stroked-button color="accent" (click)="onClickCancelButton()">CANCEL</button>
+  </div>
+</div>

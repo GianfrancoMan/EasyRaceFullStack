@@ -1,0 +1,57 @@
+<div id="results">
+  <app-nav [title]="title" [manage]="false"></app-nav>
+  <div class="content">
+    <div class="content-inside">
+      @if(!fileSelected){
+        <app-upload [title]="titleUpload" (selectedFile)="onUpload($event)" [requirePerformed]="true"></app-upload>
+      } 
+      @else {
+        <div *ngIf="!showList" class="content-inside-act">
+          <button mat-raised-button color="primary" (click)="onBack()">back</button>
+          <button mat-raised-button color="warn" (click)="createPdf()">download</button>
+        </div>
+        <div class="content-inside-results">
+          <div class="ttl">
+            <h2><strong>{{raceTitle}}</strong></h2>
+            <br/>
+            <div class="h3tt">
+              <h3 *ngIf="!showList">Federation:<strong>{{ranking[0].federation !== "" ? ranking[0].federation : "  -----"}}</strong></h3>
+              <h3 *ngIf="!showList">Type:<strong>{{ranking[0].type !== "" ? ranking[0].type : "  -----"}}</strong></h3>
+              <h3 *ngIf="!showList">Specialty:<strong>{{ranking[0].specialty !== "" ? ranking[0].specialty : "  -----"}}</strong></h3>
+            </div>
+            <div class="h3tt">
+              <h3 *ngIf="!showList">city: <strong>{{ranking[0].city !== "" ? ranking[0].city : "  -----"}}</strong></h3>
+              <h3 *ngIf="!showList">date: <strong>{{ranking[0].date !== "" ? ranking[0].date : "  -----"}}</strong></h3>
+            </div>
+          </div>
+            @if(showList){
+              <div class="lnk">             
+                <h3>Select The Ranking</h3>
+                @for(c of categories; track c ) {
+                  <a type="button" class="ctgr-lst" (click)="showRanking(c.name)"><strong>{{c.name}}</strong>&nbsp; &nbsp;</a>
+                }
+                <a *ngIf="overallAvailable" type="button" class="ctgr-lst" (click)="showRanking('OVERALL')"><strong>OVERALL</strong></a>
+              </div>
+            } @else {
+              <div class="rnkng">                
+                <h2>category:<strong>{{overallSelected ? 'OVERALL' : ranking[0].category}}</strong></h2>
+                <table class="table">
+                  <thead>
+                    <tr><th>POS.</th><th>N.</th><th>NAME</th><th class="th-nn">CATEGORY</th><th class="th-nn">TEAM</th><th>TIME</th></tr>
+                  </thead>
+                  <tbody>
+                    @for(r of ranking; track r; let idx=$index) {
+                      <tr>
+                        <td>{{(idx+1)}}</td><td>{{r.raceNumber}}</td><td>{{r.name}}</td><td class="td-nn">{{r.category}}</td><td class="td-nn">{{r.team}}</td><td>{{r.time}}</td>
+                      </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            }
+        </div>
+      }
+    </div>
+    <div class="content-footer"></div>
+  </div>
+</div>
