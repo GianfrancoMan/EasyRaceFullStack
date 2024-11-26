@@ -93,7 +93,6 @@ export class NewRaceComponent implements OnDestroy, OnInit {
           window.URL.revokeObjectURL(url); 
         }),
         catchError( (error)=> {
-          console.log('newRaceCatchError:SAVE')
           const errorResolved = this.authService.loginExpiredHandler(error);
           if(errorResolved !== null) 
             return of(errorResolved)
@@ -105,7 +104,6 @@ export class NewRaceComponent implements OnDestroy, OnInit {
     const deleteFileRequest= this.configurationService.deleteTemporaryFile(`race_${this.raceData.title}_${this.raceData.date.getFullYear()}.srr`).pipe(
       tap( _=> console.log("deleted file")),
       catchError( (error)=> {
-        console.log('newRaceCatchError:DELETE')
         const errorResolved = this.authService.loginExpiredHandler(error);
         if(errorResolved !== null) return of(errorResolved); else return of("ERROR")
       }),
@@ -113,7 +111,6 @@ export class NewRaceComponent implements OnDestroy, OnInit {
     
     concat(newRaceRequest, deleteFileRequest).pipe(
       catchError(err => {
-        console.log(err);
         return of("ERROR");
       }),
     ).subscribe(

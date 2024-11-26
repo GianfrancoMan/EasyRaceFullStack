@@ -66,7 +66,6 @@ export class ConfigurationService {
     if(file !== undefined) {
       const data: FormData = new FormData();
       data.append('file', file, file.name);
-      console.log(file.name);
       return this.http.post(this.BASE_URL+'/data-for-athlete', data);
     }
 
@@ -86,7 +85,6 @@ export class ConfigurationService {
     if(file !== undefined) {
       const data: FormData = new FormData();
       data.append('file', file, file.name);
-      console.log(file.name);
       return this.http.post<Athlete[]>(this.BASE_URL+'/lst-athl', data);
     }
 
@@ -112,12 +110,10 @@ export class ConfigurationService {
    * @returns Observable of type RaceData or of type undefined
    */
   public uploadConfiguration() : Observable<boolean | undefined> {
-    console.log('uploadFile:' + this.getCurrentFileName());
     const file:File | undefined = this.getRawRaceFile();
     if(file !== undefined) {
       const data: FormData = new FormData();
       data.append('file', file, file.name);
-      console.log(file.name);
       return this.http.post<boolean>(`${this.BASE_URL}/upload`, data);
     }
     return of(undefined);
@@ -132,7 +128,6 @@ export class ConfigurationService {
   public getDataAvailableForChanges():Observable<RaceData | undefined>  {
     const file = this.getRawRaceFile();
     if(file !== undefined) {
-      console.log("service",this.getCurrentFileName());
       const filename = this.getCurrentFileName();
       return this.http.get<RaceData | undefined>(`${this.BASE_URL}/avlbl-dt`, {params:{filename:filename}});
       
@@ -211,7 +206,6 @@ export class ConfigurationService {
     if(file !== undefined) {
       const data: FormData = new FormData();
       data.append('file', file, file.name);
-      console.log(file.name);
       return this.http.post<boolean>(`${this.BASE_URL}/pld-chck`, data);
     }
     return of(undefined);

@@ -102,7 +102,6 @@ export class ResultsComponent implements OnInit,OnDestroy{
           this.overallAvailable = true;
           this.categories = raceCategories;
           this.checkForOverall();
-          console.log(this.categories);
           this.filename = this.confService.getCurrentFileName();
         }
         else {
@@ -147,7 +146,6 @@ export class ResultsComponent implements OnInit,OnDestroy{
         if(rank.length > 0) {
           if(rankingName) {
             this.ranking = rank;
-            console.log(this.ranking);
             this.showList = false;
           } else {
             this.messages.setupMessageForDialog("Something Was Wrong Retrieving The Ranking", MessageType.SIMPLE_MESSAGE);
@@ -206,7 +204,6 @@ export class ResultsComponent implements OnInit,OnDestroy{
         } else {
           const titleArr = this.confService.getCurrentFileName().split('_');
           this.raceTitle = titleArr[1];
-          console.log("result", this.raceTitle);
         }
       }),
       catchError( (error)=> {

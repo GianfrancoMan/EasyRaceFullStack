@@ -56,7 +56,6 @@ export class RaceService {
       }
       const data: FormData = new FormData();
       data.append('file', file, file.name);
-      console.log(file.name);
       return this.http.post(this.BASE_URL+'/upload', data, {withCredentials:true, ...options});
     }
     return of(new Response());
@@ -113,7 +112,6 @@ export class RaceService {
    * @returns an array of type Result interface.
    */
   public getRaceResults(filename:string, rankingName:string):Observable<Result[]> {
-    console.log(filename, rankingName);
     return this.http.get<Result[]>(`${this.BASE_URL}/results`, {params:{filename, rankingName}})
   }
   

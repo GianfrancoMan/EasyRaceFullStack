@@ -33,8 +33,7 @@ export class UploadComponent {
       this.configurationService.setRawRaceFile(file);
       this.configurationService.checkForPerformedConfiguration(file).pipe(
         tap( res => {
-          if(res!== undefined && res !== null) {            
-            console.log("res", file.name)
+          if(res!== undefined && res !== null) {
             if(this.requirePerformed === res) {
               this.selectedFile.emit(true);
             }

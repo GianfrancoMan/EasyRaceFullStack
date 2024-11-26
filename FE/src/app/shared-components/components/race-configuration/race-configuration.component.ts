@@ -39,7 +39,6 @@ export class RaceConfigurationComponent implements OnInit {
     this.dateToFix = true;
     const stringDate: string = `${date.getMonth() +1}/${date.getDate()}/${date.getFullYear()}`;
     this.dataForm.get('date')?.setValue(stringDate);
-    console.log(stringDate)
   }
 
 
@@ -194,7 +193,6 @@ export class RaceConfigurationComponent implements OnInit {
     const dateStr:string = this.dataForm.value.date;
     const dateArr:string[] = dateStr.split('/');
     const fixedDate =  new Date(+dateArr[2], (+dateArr[0])-1, (+dateArr[1])+1);
-    console.log(fixedDate);
     return fixedDate;
   }
 

@@ -38,7 +38,6 @@ export class NavComponent implements OnInit{
       this.userService.getUser().pipe(
         tap(u=> {
           this.user = u;
-          console.log(this.user);
           localStorage.setItem('loggedUser', JSON.stringify(this.user));
         }),
         catchError( (error)=> {

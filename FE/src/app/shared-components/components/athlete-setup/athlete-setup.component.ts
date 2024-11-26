@@ -114,7 +114,6 @@ export class AthleteSetupComponent implements OnInit{
 
     concat(dataForAthleteRequest).subscribe(
       resp=> {
-        console.log(resp);
         if(resp instanceof HttpErrorResponse) {
           if(resp.status === HttpStatusCode.Forbidden) {            
             localStorage.removeItem("jwtkn");
@@ -423,7 +422,6 @@ export class AthleteSetupComponent implements OnInit{
       }
       let possibleFile = this.configurationService.getRawRaceFile();
       if(possibleFile != undefined) {
-        console.log("addAthlete:",possibleFile.name)
         let fileToSend:File;
         fileToSend = possibleFile;
         this.fileToSendName = fileToSend.name;
@@ -434,7 +432,6 @@ export class AthleteSetupComponent implements OnInit{
           tap( x => {
             if(x===true) {
               this.configurationService.setRawRaceFile(fileToSend);
-              console.log("uploadForRegistrationRequest", this.configurationService.getCurrentFileName())
             }
             else throw new Error("File not sended");
           }),
@@ -495,7 +492,7 @@ export class AthleteSetupComponent implements OnInit{
             }
           });
       } else {
-        //console.log("ERROR SENDING DATA FOR REGISTRATION:file undefined")
+        //ERROR SENDING DATA FOR REGISTRATION:file undefined
       }        
     } else {
       alert("Add at least an athlete")

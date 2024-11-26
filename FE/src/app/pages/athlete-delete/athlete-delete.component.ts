@@ -91,7 +91,6 @@ export class AthleteDeleteComponent implements OnDestroy, OnInit{
             this.messageService.setupMessageForDialog("It appears that there are no athletes registered for the selected race.", MessageType.SIMPLE_MESSAGE);
             this.router.navigate(["/"]) ;
           }
-          console.log(this.athletes);
         }
       }),
       catchError( (error)=> {
@@ -124,7 +123,6 @@ export class AthleteDeleteComponent implements OnDestroy, OnInit{
   
   public onSelectedAthlete(item:any) {
     this.athleteToDelete = <Athlete>item;
-    console.log(item);
   }
 
 

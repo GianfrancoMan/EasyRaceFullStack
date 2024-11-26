@@ -103,7 +103,6 @@ export class ChangeCategoryComponent implements OnDestroy, OnInit {
           this.athletes = res;
           this.sortAthlete();
           this.uploadView = false;
-          console.log(this.athletes);
         } else {
           this.messages.setupMessageForDialog("Something was wrong retrieving athletes", MessageType.SIMPLE_MESSAGE);
         }
@@ -118,7 +117,6 @@ export class ChangeCategoryComponent implements OnDestroy, OnInit {
     tap(res => {
       if(res !== undefined && res.length > 0) {
         this.categories = res;
-        console.log(this.categories);
       } else {
         this.messages.setupMessageForDialog("Something was wrong retrieving categories", MessageType.SIMPLE_MESSAGE);
         this.router.navigate(['/']);
@@ -163,7 +161,6 @@ export class ChangeCategoryComponent implements OnDestroy, OnInit {
 
   public onSelectedAthlete(item:any):void {  
     this.selectedAthlete = <Athlete>item;
-    console.log(this.selectedAthlete);
     if(this.selectedAthlete.id) {
       const uploadRequest = this.confService.uploadConfiguration().pipe(
         tap(res=>{
@@ -180,7 +177,6 @@ export class ChangeCategoryComponent implements OnDestroy, OnInit {
         tap(res => {
           if(res && res.name !== 'not_found') {
             this.currentCategory = res;
-            console.log(this.currentCategory);
           }
           else this.messages.setupMessageForDialog("Something was wrong retrieving the athlete category", MessageType.SIMPLE_MESSAGE);
         }),
@@ -226,7 +222,6 @@ export class ChangeCategoryComponent implements OnDestroy, OnInit {
 
 
   public onCategorySelected(category:Category) {
-    console.log("Selected Category:"  + category.name);
     if(category){
       this.newestCategory = category;
 
@@ -247,7 +242,6 @@ export class ChangeCategoryComponent implements OnDestroy, OnInit {
       const updateCategoryRequest = 
         this.athleteService.updateAthleteRaceCategory(this.confService.getCurrentFileName(), this.selectedAthlete.id, category).pipe(
           tap( res => {
-            console.log("updateCategoryRequest passed:" + res);
             if(res === null) {
               this.messages.setupMessageForDialog("Something was wrong changing the athlete category, Please try again later.", MessageType.SIMPLE_MESSAGE);
               this.router.navigate(['/']);

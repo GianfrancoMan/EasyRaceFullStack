@@ -25,13 +25,11 @@ export class AuthorizationComponent {
   public goToSignUp() {this.displayLogin = false;}
 
   public onUserEmitter(user:User):void {
-    console.log(user);
     this.auth.subscribeUser(user).pipe(
       tap(res => {
         if(res) {
           this.displayLogin = true;
           this.currentUser = res;
-          console.log(this.currentUser);
         }
         else {
           this.message.setupMessageForDialog("Something was wrong: user not retrieved.", MessageType.SIMPLE_MESSAGE);
@@ -56,7 +54,6 @@ export class AuthorizationComponent {
       this.router.navigate(['/']);
     }
     else {
-      console.log(userLogin);
       this.auth.logUser(userLogin).pipe(
         tap(res => {
           if(res) {
@@ -64,7 +61,6 @@ export class AuthorizationComponent {
             this.loginResponse = res;
             localStorage.removeItem('loggedUser');
             localStorage.setItem("jwtkn", res.token);
-            console.log(this.loginResponse);
             this.router.navigate(['/']);
           }
           else {

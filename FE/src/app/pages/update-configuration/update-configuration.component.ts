@@ -75,7 +75,6 @@ export class UpdateConfigurationComponent implements OnDestroy, OnInit {
           this.messages.setupMessageForDialog("Something was wrong, file upload failed.", MessageType.SIMPLE_MESSAGE);
           this.router.navigate(["/"]);
         }
-        console.log(res);
       }),
       catchError( (error)=> {
         const errorResolved = this.authService.loginExpiredHandler(error);
@@ -86,8 +85,7 @@ export class UpdateConfigurationComponent implements OnDestroy, OnInit {
     const dataAvailableForChangesRequest = this.confServices.getDataAvailableForChanges().pipe(
       tap( data => {
         if(data) {
-          this.data = data;          
-          console.log(this.data);
+          this.data = data;
         }
         else {
           this.messages.setupMessageForDialog("Something was wrong, download configuration data failed .", MessageType.SIMPLE_MESSAGE);
@@ -132,7 +130,6 @@ export class UpdateConfigurationComponent implements OnDestroy, OnInit {
   
   public updateConfiguration(): void {
     //TODO: sends configuration changes on the server side.
-    console.log(this.data);
 
     const uploadRequest = this.confServices.uploadConfiguration().pipe(
       tap( res => {

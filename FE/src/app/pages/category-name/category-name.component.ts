@@ -104,7 +104,6 @@ export class CategoryNameComponent implements OnInit, OnDestroy {
 
     const categoriesRequest = this.confService.getRaceCategories().pipe(
       tap(res => {
-        console.log(res);
         if(res) {
           this.categories = res;
           this.sortCategory();
@@ -160,8 +159,7 @@ export class CategoryNameComponent implements OnInit, OnDestroy {
       const uploadRequest = this.upload();
 
       const changeCategoryNameRequest = this.confService.changeCategoryName(this.currentCategory.name, newCategory).pipe(
-        tap( res => {            
-          console.log('request: ' + res.name);
+        tap( res => {
           this.newestCategory = res.name;          
         }),
         catchError( (error)=> {
@@ -214,7 +212,6 @@ export class CategoryNameComponent implements OnInit, OnDestroy {
         
       });
 
-      console.log(newCategory);
     }
     else{
       this.categoryNameForm.get("newest")?.setValue('');
@@ -246,7 +243,6 @@ export class CategoryNameComponent implements OnInit, OnDestroy {
           this.messages.setupMessageForDialog("Something was wrong, file upload failed.", MessageType.SIMPLE_MESSAGE);
           this.router.navigate(["/"]);
         }
-        console.log(res);
       }),
       catchError( (error)=> {
         const errorResolved = this.authService.loginExpiredHandler(error);

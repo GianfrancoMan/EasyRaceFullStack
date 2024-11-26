@@ -127,8 +127,6 @@ export class OfficerComponent implements OnDestroy, OnInit {
         tap( response => {
           this.raceService.performing = true;
           this.filename = this.confService.getCurrentFileName();
-          console.log(this.filename)
-          console.log(response);
           if(response.status === 205) {
             this.exit(MessageType.SIMPLE_MESSAGE);
           } else {
@@ -140,7 +138,6 @@ export class OfficerComponent implements OnDestroy, OnInit {
                   this.sectionCategories.push(c);
                 });
                 this.overallEnabled = this.checkForOverallEnabled();
-                console.log(this.categories);
               }
           }
         }),
@@ -176,12 +173,10 @@ export class OfficerComponent implements OnDestroy, OnInit {
 
       this.raceService.startCategories(startCategoryNames).pipe(
         tap(result => {
-          console.log(result);
 
           this.sectionCategories = noStartedCategories;
           this.selectedIndexes = [];
           this.sectionCategories.forEach( _c => this.selectedIndexes.push(false));
-          console.log(this.sectionCategories);
         }),
         catchError( _=> of("ERROR")),
       ).subscribe(res=> {
@@ -216,7 +211,6 @@ export class OfficerComponent implements OnDestroy, OnInit {
 
   private setRankingToDisplay(category:Category, ranking:CrossingData[]) {
     if(ranking.length > 0) this.ranking = ranking;
-    console.log(this.ranking);
     if(this.categories.length > 0) {
       for(let i:number =0; i<this.categories.length; i++) {
         if(this.categories[i].name === category.name) {
@@ -234,7 +228,6 @@ export class OfficerComponent implements OnDestroy, OnInit {
     let index;
     if(isOverall === true){
       this.rankingCategories.push({name:"GENERAL", lapsToDo:this.categories[0].lapsToDo});
-      console.log('IS_OVERALL',this.rankingCategories);
     }
     else{
       this.rankingCategories.find((c:Category,i:number) => {
@@ -319,7 +312,6 @@ export class OfficerComponent implements OnDestroy, OnInit {
    */
   public onRacePerformed(performed:boolean): void {
     if(performed) {
-      console.log(this.filename)
       this.raceService.markRaceAsPerformed(this.filename).pipe(
         tap(blob => {
           if(blob) {
@@ -334,10 +326,8 @@ export class OfficerComponent implements OnDestroy, OnInit {
             window.URL.revokeObjectURL(url);
             this.messageService.setupMessageForDialog({filename:this.filename}, MessageType.RACE_PERFORMED);
             this.manage = false;
-            const result:string = performed ? 'Completed' : 'Abort';
             localStorage.removeItem('cache');
             localStorage.removeItem('cacheCategories');
-            console.log(result);
             this.raceService.performing = false;
             this.router.navigate(['/']);
           }
