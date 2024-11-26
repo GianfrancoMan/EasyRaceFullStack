@@ -59,15 +59,11 @@ public class OfficerService {
 
   public ResponseEntity<List<Category>> getRawRaceForOfficer(MultipartFile multipart, String sessionId) {
     this.sessionId = sessionId;
-    System.out.println(sessionId);
     try {
       Path path = Paths.get(TEMPORARY_PATH + multipart.getOriginalFilename());
-      System.out.println(path);
       Files.write(path, multipart.getBytes());
-      File file = path.toFile();      
-      System.out.println(file.getName() + ":" + file.exists());
+      File file = path.toFile();
       RawRace raw = (RawRace)ss.deserialize(file);
-      System.out.println(raw);
 
       file.delete();
       
@@ -123,17 +119,13 @@ public class OfficerService {
       response.addHeader("Set-Cookie", "JSESSIONID="+this.sessionId + ";Path=/"+";Secure"+";HttpOnly");
       response.addHeader("Access-Control-Allow-Credentials", "true");
       var categories = stringCategories.split("¢");
-      for(String name: categories)System.out.println(name);
-      System.out.println(this.rawRace.getRawAthletes());
 
       long startTime = ZonedDateTime.of(LocalDateTime.now(), ZoneId.systemDefault()).toInstant().toEpochMilli();
       int startedAthlete = 0;
       for(String name:categories) {
          for(RawAthlete athlete:this.rawRace.getRawAthletes()) {
-          System.out.println(athlete.getCategory().getName().trim().toUpperCase());
           if(athlete.getCategory().getName().equals(name)) {
             athlete.setStartTime(startTime);
-            System.out.println("id:" + athlete.getAthleteId() + ", startTime:" + athlete.getStartTime());
             startedAthlete ++;
           }
          }
@@ -172,8 +164,7 @@ public class OfficerService {
                 rwAthlete.setPerformedLaps(rwAthlete.getPerformedLaps() + 1);
                 i = rwAthlete.getRaceTimes().length;
               }
-            }           
-            System.out.println(rwAthlete);
+            }
           }
   
           return this.setCrossingData(rwAthlete, false);
@@ -184,7 +175,6 @@ public class OfficerService {
           crossingData.setResponseStatus("valid_finished");
           crossingData.setFinished(true);
           crossingData.setRaceNumber(raceNumber);
-          System.out.println("the athlete has finished");
           return crossingData;
         }
       }
@@ -286,7 +276,6 @@ public class OfficerService {
       }
 
     });
-    for(RawAthlete a : listToOrder) System.out.println("number:" + a.getRaceNumber() + ", time:" + a.getCurrentTime());
     return listToOrder;
   }
 
@@ -486,7 +475,6 @@ public class OfficerService {
       List<Result> results = new ArrayList<>();
       for(var a : ranking) {
         Athlete athlete = athleteRepo.findById(a.getAthleteId()).orElse(null);
-        System.out.println(athlete);
         if( (athlete != null) && (race != null) ) {
           List<Long> times = new ArrayList<>();
           for(var t : a.getRaceTimes()) times.add(t);
@@ -507,7 +495,6 @@ public class OfficerService {
           );
         }
       }
-      for(var r:results) System.out.println(r);
       return results;
 
     } catch (ClassCastException e) {

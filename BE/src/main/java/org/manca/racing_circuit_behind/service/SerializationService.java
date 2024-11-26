@@ -60,8 +60,7 @@ public class SerializationService {
                 files[index].delete();
                 files = temporaryFolder.listFiles();
                 index = files.length-1;
-            }
-            System.out.println("CALLED CLEAR CONTEXT");            
+            }        
         } catch (SecurityException e) {
            System.out.println("SecurityExceptionOccurred");
         }

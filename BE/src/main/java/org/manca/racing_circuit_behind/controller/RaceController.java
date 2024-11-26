@@ -98,7 +98,6 @@ public class RaceController {
    */
   @PostMapping("/upload")
   public boolean uploadConfiguration(MultipartFile file) {
-    System.out.println("called upload");
     return raceService.storeInTemporaryFolder(file);
   }
 
@@ -149,7 +148,6 @@ public class RaceController {
    */
   @GetMapping("/avlbl-dt")
   public Race configurationData(@RequestParam String filename) {
-    System.out.println("configuration available called");
       return raceService.getDataConfigurationAvailableForChanges(filename);
   }
 
@@ -159,8 +157,7 @@ public class RaceController {
    * @return A file containing the modified race configuration.
    */
   @PutMapping("/updt-bsc")
-  public ResponseEntity<Resource> updateConfiguration(@RequestBody Race race, @RequestParam String filename) {      
-    System.out.println("update called");
+  public ResponseEntity<Resource> updateConfiguration(@RequestBody Race race, @RequestParam String filename) {
       return raceService.serveUpdateConfiguration(race, filename);
   }
 
@@ -197,7 +194,6 @@ public class RaceController {
    */
   @PutMapping("/chng/nm")
   public Category putCategoryName(@RequestParam String[] parameter) {
-    System.out.println("FILENAME: "+parameter[0]+" old name:"+parameter[1]+" new name:"+parameter[2]);
     return raceService.changeCategoryName(parameter[0], parameter[1], parameter[2]);
   }
 

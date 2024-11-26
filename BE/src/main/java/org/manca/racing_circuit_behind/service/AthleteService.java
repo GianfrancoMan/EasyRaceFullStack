@@ -126,14 +126,12 @@ public class AthleteService {
   public ResponseEntity<Resource> manageDataForRegister(DataForRegistration data) {
     String headerText = "";
 
-    System.out.println("manageDataForRegister: " + data.getFileName());
     File file = new File(TEMPORARY_PATH + data.getFileName());
     RawRace raw = (RawRace) ss.deserialize(file);
     
     for(int i= 0; i< data.getAthletes().size(); i++) {
       //call method to check if the entity athlete needs persistence operations
       Athlete athlete= persistAthleteIfNeeded(data, i);
-      System.out.println("ATHLETE ID:"+athlete.getId());
       RawAthlete rawAthlete = new RawAthlete();
       rawAthlete.setAthleteId(athlete.getId());
       rawAthlete.setCategory(data.getCategories().get(i));

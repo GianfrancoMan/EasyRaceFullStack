@@ -117,11 +117,9 @@ public class RaceService {
    * @param race
    * @return org.springframework.http.ResponseEntity<Resource> 
    */
-  public ResponseEntity<Resource> createRace(Race race) {    
-    System.out.println(race);
+  public ResponseEntity<Resource> createRace(Race race) {
     RawRace rawRace = getRawRaceFromRace(race);  
     Race newRace = raceRepo.save(race);
-    System.out.println(newRace);
     String fileName = TEMPORARY_PATH + "race_" + newRace.getTitle() + "_" + newRace.getDate().getYear() + ".srr";
 
     rawRace.setRaceId(newRace.getId());
@@ -171,7 +169,6 @@ public class RaceService {
       RaceDataForAthlete raceDataForAthlete = new RaceDataForAthlete();
       File fis;
       Path path = Paths.get(TEMPORARY_PATH + file.getOriginalFilename());
-      System.err.println("Path: " + path.toString());
       Files.write(path, file.getBytes(), StandardOpenOption.CREATE_NEW);
       fis = path.toFile();
       RawRace raw = (RawRace) ss.deserialize(fis);
@@ -199,8 +196,6 @@ public class RaceService {
       return raceDataForAthlete;
     } catch (IOException e) {
         e.printStackTrace();
-        System.out.println("File non creato");
-        System.out.println("Original file name: "+file.getOriginalFilename());
         return null;
     }
   }
@@ -217,7 +212,6 @@ public class RaceService {
       var athletes = new ArrayList<Athlete>();
       File fis;
       Path path = Paths.get(TEMPORARY_PATH + file.getOriginalFilename());
-      System.err.println("Path: " + path.toString());
       Files.write(path, file.getBytes(), StandardOpenOption.CREATE_NEW);
       fis = path.toFile();
       RawRace raw = (RawRace) ss.deserialize(fis);
@@ -230,8 +224,6 @@ public class RaceService {
       return athletes;
     } catch (IOException e) {
         e.printStackTrace();
-        System.out.println("File non creato");
-        System.out.println("Original file name: "+file.getOriginalFilename());
         return null;
     }
   }
@@ -409,7 +401,6 @@ public class RaceService {
    * @return boolean true if the race configuration ahs been marked as performed, otherwise false. 
    */
   public Boolean checkForPerformed(MultipartFile file) {
-    System.out.println("Called");
     try {
       File fis;
       Path path = Paths.get(TEMPORARY_PATH + file.getOriginalFilename());
@@ -441,7 +432,6 @@ public class RaceService {
     
     try {
       File file = ss.serialize(rawRace, filename);
-      System.out.println("File exists: "  + file.exists());
 
       // Create a resource for the file
       Path path = file.toPath();

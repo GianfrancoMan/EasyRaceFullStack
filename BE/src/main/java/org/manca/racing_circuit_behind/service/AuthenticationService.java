@@ -29,7 +29,6 @@ public class AuthenticationService {
   }
 
   public User signup(RegisterUserDto rud) {
-    System.out.println("called");
     User user = new User();
     user.setName(rud.getName());
     user.setSurname(rud.getSurname());
