@@ -1,0 +1,158 @@
+
+# Compiled output
+/FE/dist
+/FE/tmp
+/FE/out-tsc
+/FE/bazel-out
+
+# Node
+/FE/node_modules
+/FE/npm-debug.log
+/FE/yarn-error.log
+
+# IDEs and editors
+/FE/.idea/
+/FE/.project
+/FE/.classpath
+/FE/.c9/
+/FE/*.launch
+/FE/.settings/
+/FE/*.sublime-workspace
+
+# Visual Studio Code
+/FE/.vscode/*
+/FE/!.vscode/settings.json
+/FE/!.vscode/tasks.json
+/FE/!.vscode/launch.json
+/FE/!.vscode/extensions.json
+/FE/.history/*
+
+# Miscellaneous
+/FE/.angular/cache
+/FE/.sass-cache/
+/FE/connect.lock
+/FE/coverage
+/FE/libpeerconnection.log
+/FE/testem.log
+/FE/typings
+
+# System files
+/FE/.DS_Store
+/FE/Thumbs.db
+
+/BE/HELP.md
+\BE\target/
+/BE/!.mvn/wrapper/maven-wrapper.jar
+/BE/!**/src/main/**/target/
+/BE/!**/src/test/**/target/
+/BE/!**/TemporayFiles
+
+
+### STS ###
+/BE/.apt_generated
+/BE/.classpath
+/BE/.factorypath
+/BE/.project
+/BE/.settings
+/BE/.springBeans
+/BE/.sts4-cache
+
+### IntelliJ IDEA ###
+/BE/.idea
+/BE/*.iws
+/BE/*.iml
+/BE/*.ipr
+
+### NetBeans ###
+/BE/nbproject/private/
+/BE/nbbuild/
+/BE/dist/
+/BE/nbdist/
+/BE/.nb-gradle/
+/BE/build/
+/BE/**/src/main/**/build/
+/BE/**/src/test/**/build/
+
+### VS Code ###
+/BE/.vscode/
+/BE/src/main/resources/application.properties
+/BE/src/main/resources/META-INF/additional-spring-configuration-metadata.json
+
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# Miscellaneous
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+
+# System files
+.DS_Store
+Thumbs.db
+
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+!**/TemporayFiles
+
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+src/main/resources/application.properties
+src/main/resources/META-INF/additional-spring-configuration-metadata.json
