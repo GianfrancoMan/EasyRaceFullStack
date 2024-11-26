@@ -1,0 +1,3 @@
+# EasyRace
+## This project aims to allow sports associations and others to easily configure circuit races.
+### In progress...
