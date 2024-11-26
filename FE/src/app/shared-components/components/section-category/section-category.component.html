@@ -13,7 +13,7 @@
         <mat-checkbox disabled=false (change)="onChangeCheckBox(i)"><label>{{c.name}}</label></mat-checkbox>
       </div>
     }    
-    <div class="ckb ovrl" *ngIf="checkForOverall()">
+    <div class="ckb ovrl" *ngIf="overallEnabled">
       <mat-checkbox [checked]="isOverall" (change)="onChangeOverall()"><label>{{"Enable Overall Ranking"}}</label></mat-checkbox>
     </div>
   </div>

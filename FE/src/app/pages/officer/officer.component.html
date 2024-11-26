@@ -9,9 +9,13 @@
           <mat-grid-list cols="3" rowHeight="100%" role="list">
             <mat-grid-tile role="listitem">
               <app-section-category 
-                [categories]="categories"
-                [selectedIndexes]="selectedIndexes"
+                [categories]="sectionCategories"
+                [started]="startedCategories"
+                [isOverall]="isOverall"
+                [overallEnabled]="overallEnabled"
                 (overall)="onOverallChange($event)"
+                (selectedIndex)="onSelectedIndex($event)"
+                (startCategory)="onStartCategories($event)"
               >
               </app-section-category>
             </mat-grid-tile>
@@ -22,9 +26,13 @@
         </div>
         <div class="content-inside-up mbl">
               <app-section-category 
-                [categories]="categories"
-                [selectedIndexes]="selectedIndexes"
-                (overall)="onOverallChange($event)"
+              [categories]="sectionCategories"
+              [started]="startedCategories"
+              [isOverall]="isOverall"
+              [overallEnabled]="overallEnabled"
+              (overall)="onOverallChange($event)"
+              (selectedIndex)="onSelectedIndex($event)"
+              (startCategory)="onStartCategories($event)"
               >
               </app-section-category>
               <app-finish-line (categoryForRanking)="onCategoryForRanking($event)"></app-finish-line>

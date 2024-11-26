@@ -33,10 +33,15 @@ export class OfficerComponent implements OnDestroy, OnInit {
 
   categories:Category[] = [];
   rankingCategories:Category[] = [];
+  sectionCategories:Category[] = [];
   selectedIndexes:boolean[] = [];
-  selectedIndex: number = 0;
+  startedCategories:string[] = [];
+  selectedIndex:number = 0;
+  overallEnabled:boolean = false;
   ranking:CrossingData[] = [];
   filename:string = "";
+  isOverall:boolean = false;
+  overallChecked = false;
   
 
   constructor() {
@@ -128,9 +133,15 @@ export class OfficerComponent implements OnDestroy, OnInit {
             this.exit(MessageType.SIMPLE_MESSAGE);
           } else {
               this.categories = response.body;
-              this.categories.forEach(c => this.rankingCategories.push(c));
-              this.categories.forEach( _c => this.selectedIndexes.push(false));
-              console.log(this.categories);
+              if(this.categories != undefined && this.categories.length > 0) {
+                this.categories.forEach(c => {
+                  this.rankingCategories.push(c);
+                  this.selectedIndexes.push(false);
+                  this.sectionCategories.push(c);
+                });
+                this.overallEnabled = this.checkForOverallEnabled();
+                console.log(this.categories);
+              }
           }
         }),
         catchError( _error => {
@@ -142,6 +153,46 @@ export class OfficerComponent implements OnDestroy, OnInit {
   }
 
   
+
+  public onSelectedIndex(indexValue:number) {
+    this.selectedIndexes[indexValue] = !this.selectedIndexes[indexValue];
+  }
+
+
+
+
+  public onStartCategories(value:boolean) {
+      let startCategoryNames:Category[] = [];
+      let noStartedCategories:Category[] = [];
+  
+      for(let i:number = 0; i < this.selectedIndexes.length; i ++) {
+        if(this.selectedIndexes[i]) {
+          startCategoryNames.push(this.sectionCategories[i]);
+          this.startedCategories.push(`${this.sectionCategories[i].name} (started)`);
+        }
+        else 
+          noStartedCategories.push(this.sectionCategories[i])      
+      }
+
+      this.raceService.startCategories(startCategoryNames).pipe(
+        tap(result => {
+          console.log(result);
+
+          this.sectionCategories = noStartedCategories;
+          this.selectedIndexes = [];
+          this.sectionCategories.forEach( _c => this.selectedIndexes.push(false));
+          console.log(this.sectionCategories);
+        }),
+        catchError( _=> of("ERROR")),
+      ).subscribe(res=> {
+        if(res==="ERROR") {
+          this.messageService.setupMessageForDialog("THE APPLICATION HAS STOPPED WORKING!!", MessageType.RACE_OFF_LINE);
+          this.openDialog();
+        }
+      });  
+  }
+
+
 
   public onCategoryForRanking(category:Category): void {
     if(category.name !== "" && category.name !== "GENERAL") {
@@ -179,15 +230,18 @@ export class OfficerComponent implements OnDestroy, OnInit {
 
 
   public onOverallChange(isOverall:boolean):void {
+    this.isOverall = isOverall;
     let index;
-    if(isOverall)
+    if(isOverall === true){
       this.rankingCategories.push({name:"GENERAL", lapsToDo:this.categories[0].lapsToDo});
+      console.log('IS_OVERALL',this.rankingCategories);
+    }
     else{
       this.rankingCategories.find((c:Category,i:number) => {
         c.name === "GENERAL"
         index = i;
       }); 
-      if(index) {
+      if(index != undefined) {
         this.rankingCategories.splice(index, 1);
         this.selectedIndex=0;
         this.onCategoryForRanking({name:this.categories[0].name, lapsToDo:this.categories[0].lapsToDo})
@@ -218,12 +272,16 @@ export class OfficerComponent implements OnDestroy, OnInit {
       {fileSelected:this.fileSelected},
       {manage:this.manage},
       {categories:this.categories},
+      {sectionCategories:this.sectionCategories},
+      {startedCategories:this.startedCategories},
       {rankingCategories:this.rankingCategories},
       {selectedIndexes:this.selectedIndexes},
       {selectedIndex:this.selectedIndex},
       {ranking:this.ranking},
       {file:this.filename},
-      {status:this.raceService.performing}
+      {status:this.raceService.performing},
+      {overallEnabled:this.overallEnabled},
+      {isOverall:this.isOverall},
     ]);
     return data;
   }
@@ -239,12 +297,16 @@ export class OfficerComponent implements OnDestroy, OnInit {
       this.fileSelected = cachedData[0].fileSelected;
       this.manage = cachedData[1].manage;
       this.categories = cachedData[2].categories,
-      this.rankingCategories = cachedData[3].rankingCategories;
-      this.selectedIndexes = cachedData[4].selectedIndexes;
-      this.selectedIndex = cachedData[5].selectedIndex;
-      this.ranking = cachedData[6].ranking;
-      this.filename = cachedData[7].file;
-      this.raceService.performing = cachedData[7].status;
+      this.sectionCategories = cachedData[3].sectionCategories;
+      this.startedCategories = cachedData[4].startedCategories;
+      this.rankingCategories = cachedData[5].rankingCategories;
+      this.selectedIndexes = cachedData[6].selectedIndexes;
+      this.selectedIndex = cachedData[7].selectedIndex;
+      this.ranking = cachedData[8].ranking;
+      this.filename = cachedData[9].file;
+      this.raceService.performing = cachedData[10].status;
+      this.overallEnabled = cachedData[11].overallEnabled;
+      this.isOverall = cachedData[12].isOverall;
     }
   }
 
@@ -302,6 +364,28 @@ export class OfficerComponent implements OnDestroy, OnInit {
     }
     
     localStorage.removeItem('cache');
+  }
+
+
+
+
+  private checkForOverallEnabled():boolean {
+    if(!this.overallChecked){
+      if(this.categories.length > 0) {
+        this.overallEnabled = true;
+        this.overallChecked = true;
+        let lapsNumber:number = this.categories[0].lapsToDo;
+        for(let c of this.categories) {
+          if(c.lapsToDo !== lapsNumber) {
+            this.overallEnabled = false;
+            break;
+          }
+        }
+        return this.overallEnabled;
+      }
+      else {return false;}
+    }
+    return this.overallEnabled
   }
 
 
