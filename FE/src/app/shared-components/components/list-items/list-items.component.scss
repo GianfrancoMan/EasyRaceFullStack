@@ -28,7 +28,7 @@
     max-width: 98%;
     h2{font-size: 1em;}
     mat-list{
-      mat-list-item{p{font-size: smaller;}}
+      mat-list-item{p{font-size: smaller;overflow-x: auto;}}
     }
   }
 }

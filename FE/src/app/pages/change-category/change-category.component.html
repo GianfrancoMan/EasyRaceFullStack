@@ -14,6 +14,8 @@
       <app-category-selector *ngIf="currentCategory"
         [categories]="categories"
         [category]="currentCategory"
+        [currentCategory]="currentCategory"
+        [athlete]="selectedAthlete"
         (categoryEmitter)="onCategorySelected($event)"
       ></app-category-selector>
     </div>

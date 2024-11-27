@@ -1,6 +1,7 @@
 import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { Category } from '../../../models/category.model';
 import { Router } from '@angular/router';
+import { Athlete } from '../../../models/athlete.model';
 
 @Component({
   selector: 'app-category-selector',
@@ -10,6 +11,8 @@ import { Router } from '@angular/router';
 export class CategorySelectorComponent {
   @Input() categories:Category[] = [];
   @Input() category!:Category;
+  @Input() currentCategory!:Category;
+  @Input() athlete!:Athlete;
   @Output() categoryEmitter:EventEmitter<Category> = new EventEmitter<Category>;
 
   private router:Router = inject(Router);
@@ -19,7 +22,8 @@ export class CategorySelectorComponent {
   }
 
   public onClickSendButton() {
-    this.categoryEmitter.emit(this.category);
+    if(this.currentCategory.name === this.category.name) alert("This is athlete's current category, Please choose another one or press the Cancel button");
+    else this.categoryEmitter.emit(this.category);
   }
 
   public onClickCancelButton() {
