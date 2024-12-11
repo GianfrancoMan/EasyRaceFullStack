@@ -1,8 +1,9 @@
-@import "./../../../../assets/scss/base.scss";
+@use "sass:color";
+@use "./../../../../assets/scss/base.scss";
 
 .list-selected {
   h2 {
-    color: $blue;
+    color: base.$blue;
     text-align: center;
   }
   height: 30%;
@@ -12,10 +13,11 @@
   mat-list {
     width: 100%;
     height: fit-content;
-    max-height: 70%;background-color: transparentize($color: $green, $amount: 0.7);
+    max-height: 70%;
+    background-color: color.adjust(base.$green, $alpha:-0.7);
     overflow: auto;
     //&::-webkit-scrollbar {display: none;}
-    mat-list-item:hover {background-color: transparentize($color: $green, $amount: 0.5);}
+    mat-list-item:hover {background-color: color.adjust(base.$green, $alpha:-0.5);}
     mat-list-item{p{cursor: pointer;}}
   } 
 

@@ -1,4 +1,4 @@
-@import "./../../../assets/scss/base.scss";
+@use "./../../../assets/scss/base.scss";
 #categoryName {
   height: 100vh;
   width: 100vw;
@@ -17,7 +17,7 @@
       flex-direction: column;
       justify-content: space-around;
       align-items: center;
-      background-color: transparentize($color: $blue, $amount: 0.4);
+      background-color: base.adjust(base.$blue, $alpha: -0.4);
       form {
         width: 100%;
         .form {
@@ -31,8 +31,8 @@
           .fields {
             display: flex;
             flex-direction: column;
-            label { color:$black; font-size: 1.2em; margin-bottom: 5px;}
-            input { color: $green; font-size: 2em; margin-bottom: 10px; max-width: 300px;}
+            label { color:base.$black; font-size: 1.2em; margin-bottom: 5px;}
+            input { color: base.$green; font-size: 2em; margin-bottom: 10px; max-width: 300px;}
           }
         }
         .btns {
@@ -55,8 +55,8 @@
   .footer {
     width: 100%;
     height: 5%;
-    background-color: $green;
-    color:$white;
+    background-color: base.$green;
+    color:base.$white;
     align-content: center;
     text-align: center;
   }

@@ -1,9 +1,10 @@
-@import "./../../../../assets/scss/base.scss";
+@use "sass:color";
+@use "./../../../../assets/scss/base.scss";
 
 #categorySelector {
   height: 100%;
   width: 100%;
-  background-color: transparentize($color: $blue, $amount: 0.7);
+  background-color: color.adjust(base.$blue, $alpha:-0.7);
   border-radius: 20px;
   .content {
     display: flex;
@@ -13,21 +14,21 @@
     height: 90%;
     width: 90%;
     .list, .current {
-      h2 {color:$red}
+      h2 {color:base.$red}
       p{
-        color: $black;
+        color: base.$black;
         font-size:larger;
         overflow-x: auto;
         overflow-y: hidden;
         padding: 10px 5px 10px 5px;
       }
       mat-list{
-        background-color: transparentize($color: $blue, $amount: 0.5);
+        background-color: color.adjust(base.$blue, $alpha:-0.5);
         max-height: 130px;
         overflow-y: auto;
         cursor: pointer;
-        mat-list-item {p{color:$white; font-size:medium;background-color: transparent;overflow: hidden;margin: auto;}}
-        mat-list-item:hover {background-color: transparentize($color: $blue, $amount: 0.3);}
+        mat-list-item {p{color:base.$white; font-size:medium;background-color: transparent;overflow: hidden;margin: auto;}}
+        mat-list-item:hover {background-color: color.adjust(base.$blue, $alpha:-0.3);}
       }
       height: 90%;
       width: 50%;

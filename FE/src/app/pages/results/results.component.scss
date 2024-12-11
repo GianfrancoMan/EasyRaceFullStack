@@ -1,11 +1,12 @@
-@import "./../../../assets/scss/base.scss";
+@use "sass:color";
+@use "./../../../assets/scss/base.scss";
 #results {
-  *{overflow: hidden;}
   // table,tr,th {
   //   border-collapse: collapse;
   // }
   height: 100vh;
   width: 100vw;
+  *{overflow: hidden;}
   .content {   
     background-image: url(./../../../assets/img/sfondo.png);
     width:100%;height:90%;
@@ -47,7 +48,7 @@
           margin: auto; 
           padding: 10px 5px 10px 5px;
           h3 {text-align: center;}
-          a {color: $blue; cursor: pointer;}
+          a {color: base.$blue; cursor: pointer;}
         }
         .rnkng {
           h2{width: fit-content;margin: auto;line-height: 100px; height: 100px;}
@@ -69,8 +70,8 @@
     &-footer {
       width: 100%;
       height: 5%;
-      background-color: $green;
-      color: $white;
+      background-color: base.$green;
+      color: base.$white;
     }
   }
 

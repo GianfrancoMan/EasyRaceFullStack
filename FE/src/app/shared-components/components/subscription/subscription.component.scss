@@ -1,4 +1,4 @@
-@import "./../../../../assets/scss/base.scss";
+@use "./../../../../assets/scss/base.scss";
 #subscription {
   width: 100%;
   min-width: 250px;
@@ -24,7 +24,7 @@
     }
   }
   .txt {
-    color: $white;
+    color: base.$white;
     font-weight: 600;
     font-size: 1.2em;
   }
