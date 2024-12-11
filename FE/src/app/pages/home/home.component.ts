@@ -13,9 +13,10 @@ import { MessageType } from '../../models/message.model';
 import { RaceService } from '../../Services/race.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.scss',
+    standalone: false
 })
 
 export class HomeComponent implements OnInit, OnDestroy {

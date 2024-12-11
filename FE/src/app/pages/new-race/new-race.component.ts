@@ -9,9 +9,10 @@ import { AuthService } from '../../Services/auth.service';
 import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
 
 @Component({
-  selector: 'app-new-race',
-  templateUrl: './new-race.component.html',
-  styleUrl: './new-race.component.scss'
+    selector: 'app-new-race',
+    templateUrl: './new-race.component.html',
+    styleUrl: './new-race.component.scss',
+    standalone: false
 })
 export class NewRaceComponent implements OnDestroy, OnInit {
   router:Router = inject(Router);

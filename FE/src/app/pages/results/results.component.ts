@@ -12,9 +12,10 @@ import { AuthService } from '../../Services/auth.service';
 import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
 
 @Component({
-  selector: 'app-results',
-  templateUrl: './results.component.html',
-  styleUrl: './results.component.scss'
+    selector: 'app-results',
+    templateUrl: './results.component.html',
+    styleUrl: './results.component.scss',
+    standalone: false
 })
 export class ResultsComponent implements OnInit,OnDestroy{
 

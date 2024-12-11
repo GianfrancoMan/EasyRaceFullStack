@@ -4,9 +4,10 @@ import { Router } from '@angular/router';
 import { Athlete } from '../../../models/athlete.model';
 
 @Component({
-  selector: 'app-category-selector',
-  templateUrl: './category-selector.component.html',
-  styleUrl: './category-selector.component.scss'
+    selector: 'app-category-selector',
+    templateUrl: './category-selector.component.html',
+    styleUrl: './category-selector.component.scss',
+    standalone: false
 })
 export class CategorySelectorComponent {
   @Input() categories:Category[] = [];

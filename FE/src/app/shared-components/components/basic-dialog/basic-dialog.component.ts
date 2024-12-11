@@ -4,9 +4,10 @@ import { Message } from '../../../models/message.model';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-basic-dialog',
-  templateUrl: './basic-dialog.component.html',
-  styleUrl: './basic-dialog.component.scss'
+    selector: 'app-basic-dialog',
+    templateUrl: './basic-dialog.component.html',
+    styleUrl: './basic-dialog.component.scss',
+    standalone: false
 })
 export class BasicDialogComponent {
   router:Router = inject(Router);

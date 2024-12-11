@@ -4,9 +4,10 @@ import { Message } from '../../../models/message.model';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-officer-dialog',
-  templateUrl: './officer-dialog.component.html',
-  styleUrl: './officer-dialog.component.scss'
+    selector: 'app-officer-dialog',
+    templateUrl: './officer-dialog.component.html',
+    styleUrl: './officer-dialog.component.scss',
+    standalone: false
 })
 export class OfficerDialogComponent {
   router:Router = inject(Router);

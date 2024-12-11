@@ -8,9 +8,10 @@ import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
 import { AuthService } from '../../../Services/auth.service';
 
 @Component({
-  selector: 'app-upload',
-  templateUrl: './upload.component.html',
-  styleUrl: './upload.component.scss'
+    selector: 'app-upload',
+    templateUrl: './upload.component.html',
+    styleUrl: './upload.component.scss',
+    standalone: false
 })
 export class UploadComponent {
  

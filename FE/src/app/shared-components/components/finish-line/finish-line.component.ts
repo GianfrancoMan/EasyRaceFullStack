@@ -10,9 +10,10 @@ import { MessageType } from '../../../models/message.model';
 import { Category } from '../../../models/category.model';
 
 @Component({
-  selector: 'app-finish-line',
-  templateUrl: './finish-line.component.html',
-  styleUrl: './finish-line.component.scss'
+    selector: 'app-finish-line',
+    templateUrl: './finish-line.component.html',
+    styleUrl: './finish-line.component.scss',
+    standalone: false
 })
 export class FinishLineComponent implements OnInit {
   private raceService:RaceService = inject(RaceService);

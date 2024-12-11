@@ -11,9 +11,10 @@ import { AuthService } from '../../Services/auth.service';
 import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
 
 @Component({
-  selector: 'app-change-category',
-  templateUrl: './change-category.component.html',
-  styleUrl: './change-category.component.scss'
+    selector: 'app-change-category',
+    templateUrl: './change-category.component.html',
+    styleUrl: './change-category.component.scss',
+    standalone: false
 })
 export class ChangeCategoryComponent implements OnDestroy, OnInit {
   private router:Router = inject(Router);

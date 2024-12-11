@@ -4,10 +4,11 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { RaceData } from '../../../models/race-data.model';
 
 @Component({
-  selector: 'app-race-configuration',
-  templateUrl: './race-configuration.component.html',
-  styleUrl: './race-configuration.component.scss',  
-  providers: [provideNativeDateAdapter()],
+    selector: 'app-race-configuration',
+    templateUrl: './race-configuration.component.html',
+    styleUrl: './race-configuration.component.scss',
+    providers: [provideNativeDateAdapter()],
+    standalone: false
 })
 export class RaceConfigurationComponent implements OnInit {
   @Input() raceData!:RaceData ;

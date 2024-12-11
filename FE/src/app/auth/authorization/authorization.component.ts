@@ -8,9 +8,10 @@ import { Router } from '@angular/router';
 import { LoginResponse, UserLogin } from '../../models/credentials.model';
 
 @Component({
-  selector: 'app-authorization',
-  templateUrl: './authorization.component.html',
-  styleUrl: './authorization.component.scss'
+    selector: 'app-authorization',
+    templateUrl: './authorization.component.html',
+    styleUrl: './authorization.component.scss',
+    standalone: false
 })
 export class AuthorizationComponent {
   auth:AuthService = inject(AuthService);

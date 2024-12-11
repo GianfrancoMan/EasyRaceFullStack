@@ -3,9 +3,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '../../../models/user.model';
 
 @Component({
-  selector: 'app-subscription',
-  templateUrl: './subscription.component.html',
-  styleUrl: './subscription.component.scss'
+    selector: 'app-subscription',
+    templateUrl: './subscription.component.html',
+    styleUrl: './subscription.component.scss',
+    standalone: false
 })
 export class SubscriptionComponent implements OnInit{
 

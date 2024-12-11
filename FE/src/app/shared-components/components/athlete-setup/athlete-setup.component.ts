@@ -17,9 +17,10 @@ import { BasicDialogComponent } from '../basic-dialog/basic-dialog.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-athlete-setup',
-  templateUrl: './athlete-setup.component.html',
-  styleUrl: './athlete-setup.component.scss'
+    selector: 'app-athlete-setup',
+    templateUrl: './athlete-setup.component.html',
+    styleUrl: './athlete-setup.component.scss',
+    standalone: false
 })
 export class AthleteSetupComponent implements OnInit{
 

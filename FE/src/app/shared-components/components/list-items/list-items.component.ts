@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-list-items',
-  templateUrl: './list-items.component.html',
-  styleUrl: './list-items.component.scss'
+    selector: 'app-list-items',
+    templateUrl: './list-items.component.html',
+    styleUrl: './list-items.component.scss',
+    standalone: false
 })
 export class ListItemsComponent {
   @Input() title:string = '';

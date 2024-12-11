@@ -11,9 +11,10 @@ import { MessagesService } from '../../../Services/messages.service';
 import { MessageType } from '../../../models/message.model';
 
 @Component({
-  selector: 'app-nav',
-  templateUrl: './nav.component.html',
-  styleUrl: './nav.component.scss'
+    selector: 'app-nav',
+    templateUrl: './nav.component.html',
+    styleUrl: './nav.component.scss',
+    standalone: false
 })
 export class NavComponent implements OnInit{
   //DECLARATIONS

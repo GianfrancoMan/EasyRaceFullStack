@@ -9,9 +9,10 @@ import { AuthService } from '../../Services/auth.service';
 import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
 
 @Component({
-  selector: 'app-update-configuration',
-  templateUrl: './update-configuration.component.html',
-  styleUrl: './update-configuration.component.scss'
+    selector: 'app-update-configuration',
+    templateUrl: './update-configuration.component.html',
+    styleUrl: './update-configuration.component.scss',
+    standalone: false
 })
 export class UpdateConfigurationComponent implements OnDestroy, OnInit {
   private confServices:ConfigurationService = inject(ConfigurationService);

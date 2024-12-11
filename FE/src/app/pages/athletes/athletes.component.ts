@@ -8,9 +8,10 @@ import { MessagesService } from '../../Services/messages.service';
 import { MessageType } from '../../models/message.model';
 
 @Component({
-  selector: 'app-athletes',
-  templateUrl: './athletes.component.html',
-  styleUrl: './athletes.component.scss'
+    selector: 'app-athletes',
+    templateUrl: './athletes.component.html',
+    styleUrl: './athletes.component.scss',
+    standalone: false
 })
 export class AthletesComponent implements OnDestroy, OnInit {
   private confService:ConfigurationService = inject(ConfigurationService);

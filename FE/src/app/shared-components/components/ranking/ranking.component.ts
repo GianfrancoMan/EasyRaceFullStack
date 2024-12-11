@@ -4,10 +4,11 @@ import { RaceService } from '../../../Services/race.service';
 import { CrossingData } from '../../../models/crossing-data.model';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 @Component({
-  selector: 'app-ranking',
-  templateUrl: './ranking.component.html',
-  styleUrl: './ranking.component.scss',
-  encapsulation: ViewEncapsulation.None
+    selector: 'app-ranking',
+    templateUrl: './ranking.component.html',
+    styleUrl: './ranking.component.scss',
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class RankingComponent {
 

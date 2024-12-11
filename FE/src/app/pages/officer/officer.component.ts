@@ -14,9 +14,10 @@ import { OfficerDialogComponent } from '../../shared-components/components/offic
 
 
 @Component({
-  selector: 'app-officer',
-  templateUrl: './officer.component.html',
-  styleUrl: './officer.component.scss'
+    selector: 'app-officer',
+    templateUrl: './officer.component.html',
+    styleUrl: './officer.component.scss',
+    standalone: false
 })
 export class OfficerComponent implements OnDestroy, OnInit {
   title:string = "Race Management";

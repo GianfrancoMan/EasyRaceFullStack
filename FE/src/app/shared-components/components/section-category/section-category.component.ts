@@ -5,9 +5,10 @@ import { MessagesService } from '../../../Services/messages.service';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-section-category',
-  templateUrl: './section-category.component.html',
-  styleUrl: './section-category.component.scss'
+    selector: 'app-section-category',
+    templateUrl: './section-category.component.html',
+    styleUrl: './section-category.component.scss',
+    standalone: false
 })
 export class SectionCategoryComponent {
   private raceService:RaceService = inject(RaceService);

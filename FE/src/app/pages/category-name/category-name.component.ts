@@ -10,9 +10,10 @@ import { AuthService } from '../../Services/auth.service';
 import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
 
 @Component({
-  selector: 'app-category-name',
-  templateUrl: './category-name.component.html',
-  styleUrl: './category-name.component.scss',
+    selector: 'app-category-name',
+    templateUrl: './category-name.component.html',
+    styleUrl: './category-name.component.scss',
+    standalone: false
 })
 export class CategoryNameComponent implements OnInit, OnDestroy {
   private confService:ConfigurationService = inject(ConfigurationService);

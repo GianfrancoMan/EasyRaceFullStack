@@ -9,9 +9,10 @@ import { AuthService } from '../../Services/auth.service';
 import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
 
 @Component({
-  selector: 'app-athlete-delete',
-  templateUrl: './athlete-delete.component.html',
-  styleUrl: './athlete-delete.component.scss'
+    selector: 'app-athlete-delete',
+    templateUrl: './athlete-delete.component.html',
+    styleUrl: './athlete-delete.component.scss',
+    standalone: false
 })
 export class AthleteDeleteComponent implements OnDestroy, OnInit{
   private configurationService:ConfigurationService = inject(ConfigurationService);
