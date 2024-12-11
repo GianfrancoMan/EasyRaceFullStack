@@ -2,7 +2,7 @@
 ## This project aims to allow sports associations and others to easily configure and manage circuit races.
 ### This repository contains both frontend and backend implementation.
 ### Technologies:
-- Frontend Angular 17
+- Frontend Angular 19
 - Backend Springboot 3.3.0
 - Database MySql
 
