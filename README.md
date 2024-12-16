@@ -38,4 +38,6 @@ Type the command ``` ./mvnw spring-boot:run ``` and press  ``` Enter ```.
 Now open a new window in the terminala and move in the FE folder  
 In the terminal type ``` cd ./EasyRaceFullStack/FE ``` and press  ``` Enter ```  
 type ```npm install``` and press  ``` Enter ``` to install all required dependencies  
-type ```npm start``` and press  ``` Enter ``` to run the frontend, follow the link provided in the terminal to open the application in the browser.  
+type ```npm start``` and press  ``` Enter ``` to run the frontend, follow the link provided in the terminal to open the application in the browser.
+
+## Usage
